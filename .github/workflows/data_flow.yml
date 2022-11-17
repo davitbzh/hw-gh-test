@@ -26,7 +26,7 @@ jobs:
         env:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
           CRYPTOCOMPARE_API_KEY: ${{ secrets.CRYPTOCOMPARE_API_KEY}}
-        run: ./scripts/data_flow.sh
+        run: ./scripts/pipeline.py
         
         
       - name: github pages update
