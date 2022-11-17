@@ -1,0 +1,9 @@
+hsfs[python]
+hopsworks
+pandas
+numpy
+matplotlib
+scikit-learn
+bs4
+tensorflow
+cryptocompare
