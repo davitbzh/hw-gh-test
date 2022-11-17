@@ -58,6 +58,7 @@ dataset = dataset[["open", "close", "high", "low", "volume"]]
 for_prev_dataset = for_prev_dataset[["open", "close", "high", "low", "volume"]]
 
 # load model
+mr = project.get_model_registry()
 model = mr.get_model("cnn_lstm_autoreg_hour", version = 1)
 model_dir = model.download()
 loaded_model = tf.saved_model.load(model_dir)
