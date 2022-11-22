@@ -95,7 +95,7 @@ result = {"fields": {
         "_draft": False,
         "all-x": predicted_close_str,
         "all-y": close_at_prediction_str,
-        "values": str(list(range(0, len(predicted_close)))).replace('[', '').replace(']', '')
+        "values": str(list(range(0, len(predicted_close)+1 ))).replace('[', '').replace(']', '')
       }
 }
 
