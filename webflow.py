@@ -29,7 +29,7 @@ pred_pdf["time"] = pred_pdf.prediction_time.map(lambda x: int(datetime.strptime(
 #pred_pdf["what_happened"] = pred_pdf.close > pred_pdf.close_at_prediction 
 pred_pdf["predicted_diff"] = pred_pdf.predicted_close - pred_pdf.predicted_at_prediction
 pred_pdf["actual_diff"] = pred_pdf.close - pred_pdf.close_at_prediction
-#pred_pdf["what_happened"] = pred_pdf.what_happened.map(lambda x: "up" if x==True else ("down" if x==False else "missing"))
+pred_pdf["what_happened"] = pred_pdf.what_happened.map(lambda x: "up" if x==True else ("down" if x==False else "missing"))
 pred_pdf.drop(['close', 'time'], axis=1, inplace=True)
 pred_pdf
 
