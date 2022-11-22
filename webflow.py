@@ -26,7 +26,7 @@ pred_pdf["time"] = pred_pdf.prediction_for_time.map(lambda x: int(datetime.strpt
 pred_pdf = pred_pdf.merge(min_pdf[["time", "close"]], on=["time"], how='left')
 pred_pdf["time"] = pred_pdf.prediction_time.map(lambda x: int(datetime.strptime(x, "%Y-%m-%d %H:%M").replace(tzinfo=timezone.utc).timestamp() * 1000))
 #pred_pdf.merge(min_pdf[["time", "close"]], on=["time"])
-#pred_pdf["what_happened"] = pred_pdf.close > pred_pdf.close_at_prediction 
+pred_pdf["what_happened"] = pred_pdf.close > pred_pdf.close_at_prediction 
 pred_pdf["predicted_diff"] = pred_pdf.predicted_close - pred_pdf.predicted_at_prediction
 pred_pdf["actual_diff"] = pred_pdf.close - pred_pdf.close_at_prediction
 pred_pdf["what_happened"] = pred_pdf.what_happened.map(lambda x: "up" if x==True else ("down" if x==False else "missing"))
