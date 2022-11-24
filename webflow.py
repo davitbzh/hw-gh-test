@@ -88,7 +88,7 @@ predicted_close = pred_pdf["predicted_close"].tolist()
 predicted_close_str = str(predicted_close).replace('[', '').replace(']', '')
 
 actual_close = pred_pdf["actual_close"].tolist()
-actual_close_str = str(actual_close).replace('[', '').replace(']', '')
+actual_close_str = str(actual_close).replace('[', '').replace(']', '').replace('nan', '')
 
 result = {"fields": {
         "slug": "prediction-last",
