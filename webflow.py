@@ -31,8 +31,8 @@ pred_pdf["predicted_diff"] = pred_pdf.predicted_close - pred_pdf.predicted_at_pr
 pred_pdf["actual_diff"] = pred_pdf.close - pred_pdf.close_at_prediction
 pred_pdf["what_happened"] = pred_pdf.what_happened.map(lambda x: "up" if x==True else ("down" if x==False else "missing"))
 #pred_pdf.drop(['close', 'time'], axis=1, inplace=True)
-pred_pdf = pred_pdf[["pk", "prediction_time", "close_at_prediction", "predicted_at_prediction", "prediction_for_time", "predicted_close", "up_or_down", "close", "what_happened", "predicted_diff"]]
-pred_pdf.columns = ["pk", "prediction_time", "close_at_prediction", "predicted_at_prediction", "prediction_for_time", "predicted_close", "up_or_down", "actual_close", "what_happened", "predicted_diff"]
+pred_pdf = pred_pdf[["pk", "prediction_time", "close_at_prediction", "predicted_at_prediction", "prediction_for_time", "predicted_close", "up_or_down", "close", "what_happened", "predicted_diff", "actual_diff"]]
+pred_pdf.columns = ["pk", "prediction_time", "close_at_prediction", "predicted_at_prediction", "prediction_for_time", "predicted_close", "up_or_down", "actual_close", "what_happened", "predicted_diff", "actual_diff"]
 pred_pdf
 
 ##### code for updating the website 
