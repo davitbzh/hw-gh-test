@@ -30,7 +30,9 @@ pred_pdf["what_happened"] = pred_pdf.close > pred_pdf.close_at_prediction
 pred_pdf["predicted_diff"] = pred_pdf.predicted_close - pred_pdf.predicted_at_prediction
 pred_pdf["actual_diff"] = pred_pdf.close - pred_pdf.close_at_prediction
 pred_pdf["what_happened"] = pred_pdf.what_happened.map(lambda x: "up" if x==True else ("down" if x==False else "missing"))
-pred_pdf.drop(['close', 'time'], axis=1, inplace=True)
+#pred_pdf.drop(['close', 'time'], axis=1, inplace=True)
+pred_pdf = fg_pdf[["pk", "prediction_time", "close_at_prediction", "predicted_at_prediction", "prediction_for_time", "predicted_close", "up_or_down", "close", "what_happened", "predicted_diff", "diff"]]
+pred_pdf.columns = ["pk", "prediction_time", "close_at_prediction", "predicted_at_prediction", "prediction_for_time", "predicted_close", "up_or_down", "actual_close", "what_happened", "predicted_diff", "diff"]
 pred_pdf
 
 ##### code for updating the website 
@@ -85,8 +87,8 @@ pred_pdf = pred_pdf.sort_values(by="pk")
 predicted_close = pred_pdf["predicted_close"].tolist()
 predicted_close_str = str(predicted_close).replace('[', '').replace(']', '')
 
-close_at_prediction = pred_pdf["close_at_prediction"].tolist()
-close_at_prediction_str = str(close_at_prediction).replace('[', '').replace(']', '')
+actual_close = pred_pdf["actual_close"].tolist()
+actual_close_str = str(actual_close).replace('[', '').replace(']', '')
 
 result = {"fields": {
         "slug": "prediction-last",
@@ -94,7 +96,7 @@ result = {"fields": {
         "_archived": False,
         "_draft": False,
         "all-x": predicted_close_str,
-        "all-y": close_at_prediction_str,
+        "all-y": actual_close_str,
         "values": str(list(range(0, len(predicted_close)+1 ))).replace('[', '').replace(']', '')
       }
 }
